@@ -7,16 +7,18 @@ import "./assets/ConversationSection.css";
 import { ReactComponent as Logo } from "./assets/twilio-mark-red.svg";
 
 import Conversation from "./Conversation";
-import Customers from "./Customers";
+import Recruits from "./Recruits";
 
 import LoginPage from "./LoginPage";
 import { ConversationsList } from "./ConversationsList";
 import { HeaderItem } from "./HeaderItem";
 
+import { createToken } from "./utils/TwilioUtils.js";
+
+import { customerData, recruiters, serverUrl } from "./assets/ProjectData.js";
+
 const { Content, Sider, Header } = Layout;
 const { Text } = Typography;
-const myToken =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImN0eSI6InR3aWxpby1mcGE7dj0xIn0.eyJqdGkiOiJTSzdlYzk1N2JhNjQ4M2E0MDAzNDFmZDU1YTM5MDZmNjJiLTE2MzAzNjgwNDkiLCJncmFudHMiOnsiaWRlbnRpdHkiOiJhbGljZSIsImNoYXQiOnsic2VydmljZV9zaWQiOiJJUzYxNzAzYjc4ODJjNzQ3OWZiMTU1Y2Q4NTFiNGQ1NTdjIn19LCJpYXQiOjE2MzAzNjgwNDksImV4cCI6MTYzMDM3MTY0OSwiaXNzIjoiU0s3ZWM5NTdiYTY0ODNhNDAwMzQxZmQ1NWEzOTA2ZjYyYiIsInN1YiI6IkFDZTVlZTQ5YjI4NDNjMDE1M2FiZGNlNDU0MmI2ZTE4ZTUifQ.Xd2lYqFM0Aph63KJSJb6ELYb_-qzRKiDVxHLq9FacUg";
 
 class ConversationsApp extends React.Component {
   constructor(props) {
@@ -33,21 +35,31 @@ class ConversationsApp extends React.Component {
       conversationsReady: false,
       conversations: [],
       selectedConversationSid: null,
-      newMessage: ""
+      newMessage: "",
+      candidateData: customerData,
+      recruiterData: recruiters,
+      url: serverUrl
     };
+
+    console.log("DATA==============", this.state.candidateData);
+
   }
 
   componentDidMount = () => {
     if (this.state.loggedIn) {
       this.getToken();
-      this.setState({ statusString: "Fetching credentials…" });
+      this.setState({ statusString: "Fetching credentials…"});
+      
     }
+
+
   };
 
   logIn = (name) => {
     if (name !== "") {
       localStorage.setItem("name", name);
       this.setState({ name, loggedIn: true }, this.getToken);
+      
     }
   };
 
@@ -71,8 +83,10 @@ class ConversationsApp extends React.Component {
   };
 
   getToken = () => {
-    // Paste your unique Chat token function
-    //const myToken = "<Your token here>";
+
+    console.log(`Creating a Token for ${this.state.name}`);
+    const myToken = createToken(this.state.name);
+
     this.setState({ token: myToken }, this.initConversations);
   };
 
@@ -81,6 +95,7 @@ class ConversationsApp extends React.Component {
     this.conversationsClient = await ConversationsClient.create(
       this.state.token
     );
+
     this.setState({ statusString: "Connecting to Twilio…" });
 
     this.conversationsClient.on("connectionStateChanged", (state) => {
@@ -140,6 +155,8 @@ class ConversationsApp extends React.Component {
         <Conversation
           conversationProxy={selectedConversation}
           myIdentity={this.state.name}
+          data={this.state.recruiterData}
+          url={this.state.url}
         />
       );
     } else if (status !== "success") {
@@ -168,7 +185,7 @@ class ConversationsApp extends React.Component {
                 </HeaderItem>
                 <HeaderItem>
                   <Text strong style={{ color: "white" }}>
-                    Conversations
+                    Facebook Recruiting
                   </Text>
                 </HeaderItem>
               </div>
@@ -204,11 +221,11 @@ class ConversationsApp extends React.Component {
               </div>
             </Header>
             <Content className="customer-section">
-              <Customers />
+              <Recruits identity={this.state.name} data={this.state.candidateData} />
             </Content>
-            <Layout>
+            <Layout id="communication-section">
               <Sider theme={"light"} width={250}>
-                <ConversationsList
+                <ConversationsList 
                   conversations={conversations}
                   selectedConversationSid={selectedConversationSid}
                   onConversationClick={(item) => {

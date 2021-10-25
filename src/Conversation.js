@@ -6,17 +6,51 @@ import styles from './assets/Conversation.module.css'
 import {Button, Form, Icon, Input} from "antd";
 import ConversationsMessages from "./ConversationsMessages";
 import PropTypes from "prop-types";
+import fetch from 'node-fetch';
 
 class Conversation extends Component {
   constructor(props) {
     super(props);
+    const { myIdentity, data, url } = props;
+
     this.state = {
         newMessage: '',
         conversationProxy: props.conversationProxy,
         messages: [],
         loadingState: 'initializing',
-        boundConversations: new Set()
+        boundConversations: new Set(),
+        identity: myIdentity,
+        recruiterData: data,
+        url: url
     };
+    this.handleClick = this.handleClick.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+    this.handleAdd = this.handleAdd.bind(this);
+
+  }
+
+  handleAdd = async (sid, user) => {
+    const res = await fetch(this.state.url + '/conversations/add/' + sid + '/' + user);
+  }
+  /*
+  * Send vcf Card
+  * see: https://www.twilio.com/docs/conversations/media-support-conversations
+  */
+  handleClick = async (e) => {
+    
+    let vcf = this.state.recruiterData.find( r => r.name == e).vcf
+    console.log("Sending vcf for ", vcf);
+    
+    const res = await fetch(vcf)
+    console.log("RESPONSE", res);
+    
+    const buff = await res.buffer()
+    this.state.conversationProxy.sendMessage({contentType: "text/vcard", media: buff});
+  }
+
+  handleClose = async (sid) => {
+    await this.closeConversation(sid);
+
   }
 
   loadMessagesFor = (thisConversation) => {
@@ -77,7 +111,15 @@ class Conversation extends Component {
   onMessageChanged = event => {
     this.setState({ newMessage: event.target.value });
   };
+  
+  closeConversation = async (sid) =>{
+    fetch(this.state.url + '/conversations/close/'+ sid);
+  }
 
+/*
+* Send Message to Conversation
+* see http://media.twiliocdn.com/sdk/js/conversations/releases/1.2.3/docs/Conversation.html#sendMessage__anchor
+*/
   sendMessage = event => {
     event.preventDefault();
     const message = this.state.newMessage;
@@ -140,6 +182,9 @@ class Conversation extends Component {
                             value={this.state.newMessage}
                         />
                         <Button icon="enter" htmlType="submit" type={"submit"}/>
+                        <Button icon="idcard" onClick={ () => this.handleClick(this.state.identity) }/>
+                        <Button icon="plus" onClick = { () => this.handleAdd(this.state.conversationProxy.sid, "bob")} />
+                        <Button icon="close" onClick = { () => this.handleClose(this.state.conversationProxy.sid) } />
                       </Input.Group>
                     </Form>
                   </div>

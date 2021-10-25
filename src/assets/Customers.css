@@ -2,11 +2,14 @@
   text-align: center;
   font-family: arial, sans-serif;
 }
-
+#customer-section {
+  width: max-content;
+}
 #customers {
   text-align: center;
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   border-collapse: collapse;
+  background-color: #ffffff;
   border: 3px solid #ddd;
   width: 100%;
 }
@@ -29,6 +32,6 @@
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: center;
-  background-color: #4caf50;
+  background-color: #f22f46;
   color: white;
 }

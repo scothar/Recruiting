@@ -1,0 +1,8 @@
+BEGIN:VCARD
+VERSION:3.0
+FN:Alice Smith
+N:Smith;Alice;;;
+TEL;TYPE#WORK,VOICE:(781) 253-8123
+item1.EMAIL;TYPE=INTERNET:help@twilio.com
+item1.X-ABLabel:
+END:VCARD

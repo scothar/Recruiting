@@ -1,0 +1,8 @@
+BEGIN:VCARD
+VERSION:3.0
+FN:Bob Jones
+N:Jones;Bob;;;
+TEL;TYPE#WORK,VOICE:(803) 902-3799
+item1.EMAIL;TYPE=INTERNET:help@twilio.com
+item1.X-ABLabel:
+END:VCARD

@@ -32,6 +32,7 @@ app.get('/conversations/add/:id/:user/', (req, res) => {
 });
 
 app.post('/token/:identity', (request, response) => {
+  console.log(config.twilio);
   const identity = request.params.identity;
   const accessToken = new twilio.jwt.AccessToken(config.twilio.accountSid, config.twilio.apiKey, config.twilio.apiSecret);
   const chatGrant = new twilio.jwt.AccessToken.ChatGrant({

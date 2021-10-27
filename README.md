@@ -14,7 +14,7 @@ This demo requires a Twilio account and a working Chat Service SID.
 You'll need to collect some credentials from the [Twilio Console](https://www.twilio.com/console):
 * Your Account SID (`ACXXX`) and Auth Token, both accessible from the [Dashboard](https://twilio.com/console/dashboard)
 * Your Account's Chat Service Sid `ISXXX` SID which is attached to your Chat Service
-
+* Your ngrok [subdomain](https://dashboard.ngrok.com/endpoints/domains). Make sure you [connect your account](https://dashboard.ngrok.com/get-started/setup) by following Step 2 in the link.
 
 Once you have the above info, update your .env file
 You only need these settings for this app:

@@ -45,13 +45,14 @@ class Recruits extends React.Component {
 
   renderTableData() {
     return this.state.customerList.map((customer, index) => {
-      const { id, name, phoneNumber, recruiter } = customer; //destructuring
+      const { address, name, phoneNumber, recruiter, coordinator } = customer; //destructuring
       return (
         <tr key={phoneNumber}>
-          <td>{id}</td>
+          <td>{address}</td>
           <td>{name}</td>
           <td>{phoneNumber}</td>
           <td>{recruiter}</td>
+          <td>{coordinator}</td>
           <td>
             <button onClick={ () => this.handleClick(phoneNumber) }>
               Create Conversation
@@ -64,7 +65,7 @@ class Recruits extends React.Component {
 
   renderTableHeader() {
 
-    let header = ["Id", "Name", "Phone Number", "Recruiter", "Action"];
+    let header = ["Address", "Name", "Phone Number", "Agent", "Coordinator", "Action"];
 
     return header.map((key, index) => {
       return <th key={index}>{key.toUpperCase()}</th>;

@@ -1,8 +1,8 @@
 const customerData = [
-  { id: 4084, name: "Scott", phoneNumber: "+1XXXXXXXXXX", recruiter: "alice", address: "100 Main Street" },
-  { id: 4093, name: "Leslie", phoneNumber: "+1XXXXXXXXXX", recruiter: "alice", address: "100 Main Street" },
-  { id: 4099, name: "Neha",  phoneNumber: "+1XXXXXXXXXX", recruiter: "alice", address: "100 Main Street" },
-  { id: 5010, name: "Aimee", phoneNumber: "+1XXXXXXXXXX", recruiter: "alice", address: "100 Main Street" }
+  { id: 4084, name: "Scott", phoneNumber: "+1XXXXXXXXXX", recruiter: "alice", address: "100 Main Street", coordinator: "bob" },
+  { id: 4093, name: "Leslie", phoneNumber: "+1XXXXXXXXXX", recruiter: "alice", address: "32108 Main Street", coordinator: "bob" },
+  { id: 4099, name: "Neha",  phoneNumber: "+1XXXXXXXXXX", recruiter: "alice", address: "90543 Main Street", coordinator: "bob" },
+  { id: 5010, name: "Aimee", phoneNumber: "+1XXXXXXXXXX", recruiter: "alice", address: "3854 Main Street", coordinator: "bob" }
  
 
 ];

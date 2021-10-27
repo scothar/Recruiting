@@ -30,7 +30,8 @@ Update the following infomration in src/assets/ProjectData.js
   { id: 4084, name: "Scott", phoneNumber: "+14083142771", recruiter: "alice" },
   { id: 4093, name: "Leslie", phoneNumber: "+16176052240", recruiter: "alice" },
   { id: 4099, name: "Neha",  phoneNumber: "+19258886464", recruiter: "alice" },
-  { id: 5010, name: "Aimee", phoneNumber: "+16508629043", recruiter: "alice" }ts/ProjectData.js```
+  { id: 5010, name: "Aimee", phoneNumber: "+16508629043", recruiter: "alice" }ts/ProjectData.js
+```
 
 
 Make sure the phone numbers for the above records are unique and accurate.

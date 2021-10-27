@@ -8,8 +8,8 @@ const customerData = [
 ];
 
 const recruiters = [
-  {name: "alice", vcf: "https://malachite-insect-1116.twil.io/assets/alice.vcf", projectedAddress: "+17812538123" },
-  {name: "bob",   vcf: "https://malachite-insect-1116.twil.io/assets/bob.vcf",   projectedAddress: "+18039023799" }
+  {name: "alice", vcf: "https://scotts-lab-1976.twil.io/alice.vcf", projectedAddress: "+14085836571" },
+  {name: "bob",   vcf: "https://scotts-lab-1976.twil.io/bob.vcf",   projectedAddress: "+14087223527" }
 ]
 
 const serverUrl = "http://localhost:3000";

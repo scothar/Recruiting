@@ -59,7 +59,7 @@ app.listen(config.port, () => {
 // ====== HANDLE NEW-CONVERSATION HOOK ========
 // ============================================
 // ============================================
-let client = new twilio(config.twilio.accountSid, config.twilio.authToken);
+let client = new twilio(config.twilio.account_sid, config.twilio.auth_token);
 
 app.post('/chat', (req, res) => {
   console.log("Received a webhook:", req.body);

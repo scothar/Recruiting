@@ -55,7 +55,7 @@ const recruiters = [
 ```
 There are sample VCF files in the assets directory, you can upload these as [Assets](https://console.twilio.com/us1/develop/assets/classic?frameUrl=%2Fconsole%2Fassets%2Fpublic%3Fx-target-region%3Dus1) in your project and then send them in Conversations.
 
-###Integrate with Spectrum
+### Integrate with Spectrum
 
 See [Spectrum Instructions](spectrum-webhook/README.md)
 

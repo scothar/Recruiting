@@ -106,7 +106,7 @@ class ConversationsApp extends React.Component {
         });
       if (state === "connected") {
         this.setState({
-          statusString: "You are connected.",
+          statusString: "You are connected as " + this.state.name ,
           status: "success"
         });
       }

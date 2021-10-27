@@ -1,20 +1,24 @@
-# The Demo Conversations App
-
+# The Demo Conversations App/Owl Real Estate
+### **Region:** NAMER
+### **Team Members:** Shiloh Fallon, Aric Day, Leslie Sachs, Scott Harris
+---
+## Project Overview
 This is a lightweight application based on [Twilio Chat](https://www.twilio.com/docs/chat).
 
-# Configuring and getting started
 
-## Copy .env.example to .env
+### Setup Instructions
+
+This demo requires a Twilio account, a working Chat Service SID, and an ngrok account.
+You'll need to collect some credentials from the [Twilio Console](https://www.twilio.com/console):
+* Your Account SID (`ACXXX`) and Auth Token, both accessible from the [Dashboard](https://twilio.com/console/dashboard)
+* Your Account's Chat Service Sid `ISXXX` SID which is attached to your Chat Service
+* Your ngrok [subdomain](https://dashboard.ngrok.com/endpoints/domains). Make sure you [connect your account](https://dashboard.ngrok.com/get-started/setup) by following Step 2 in the link.
+
 
 In your local project directory, make a copy of the `.env.example` file
 
 ```cp .env.example .env```
 
-This demo requires a Twilio account and a working Chat Service SID.
-You'll need to collect some credentials from the [Twilio Console](https://www.twilio.com/console):
-* Your Account SID (`ACXXX`) and Auth Token, both accessible from the [Dashboard](https://twilio.com/console/dashboard)
-* Your Account's Chat Service Sid `ISXXX` SID which is attached to your Chat Service
-* Your ngrok [subdomain](https://dashboard.ngrok.com/endpoints/domains). Make sure you [connect your account](https://dashboard.ngrok.com/get-started/setup) by following Step 2 in the link.
 
 Once you have the above info, update your .env file
 You only need these settings for this app:
@@ -49,9 +53,9 @@ const recruiters = [
   {name: "bob",   vcf: "https://XXXXXXXXXXXXXXXXXXXXXX/bob.vcf",   projectedAddress: "+14087223527" }
 ]
 ```
-There are sample VCF files in the assets directory, you can upload these as [Assets](https://console.twilio.com/us1/develop/assets/classic?frameUrl=%2Fconsole%2Fassets%2Fpublic%3Fx-target-region%3Dus1) in your project
+There are sample VCF files in the assets directory, you can upload these as [Assets](https://console.twilio.com/us1/develop/assets/classic?frameUrl=%2Fconsole%2Fassets%2Fpublic%3Fx-target-region%3Dus1) in your project and then send them in Conversations.
 
+###Integrate with Spectrum
 
+See [Spectrum Instructions](spectrum-webhook/README.md)
 
-
-Make sure the phone numbers for the above records are unique and accurate.

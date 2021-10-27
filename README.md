@@ -4,26 +4,44 @@ This is a lightweight application based on [Twilio Chat](https://www.twilio.com/
 
 # Configuring and getting started
 
+## Copy .env.example to .env
+```user@machine cp .env.example .env```
+
 This demo requires a Twilio account and a working Chat Service SID.
 You'll need to collect some credentials from the [Twilio Console](https://www.twilio.com/console):
 * Your Account SID (`ACXXX`) and Auth Token, both accessible from the [Dashboard](https://twilio.com/console/dashboard)
 * Your Account's Chat Service Sid `ISXXX` SID which is attached to your Chat Service
 
-# Testing
 
-The demo application can be configured and run in two ways:
-* Forking [the demo-chat-application on CodeSandbox.io](https://codesandbox.io/s/github/TwilioDevEd/conversations-demo) (recommended)
-* Cloning this repo and running locally
+Once you have the above info, update your .env file
+You only need these settings for this app:
 
-# Replacing the Chat Token
-In order for your Chat Application to work, we need to authenticate a Chat user by retrieving a short-lived token attached to your API Key. The `getToken` function in `ConversationsApp.js` has a placeholder for your chat token.
+```REACT_APP_TWILIO_ACCOUNT_SID=ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+REACT_APP_TWILIO_AUTH_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+REACT_APP_TWILIO_CHAT_SERVICE_SID=ISxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+REACT_APP_PORT=3001
+REACT_APP_NGROK=xxxxxxxxxxx```
 
-You can generate a token in a few ways:
-* Using the [twilio-cli](https://www.twilio.com/docs/twilio-cli/quickstart) and [twilio token plugin](https://github.com/twilio-labs/plugin-token) (Recommended)
-* Using [Twilio Runtime Function](https://www.twilio.com/docs/runtime/functions)
+## Update ProjectData.js
 
- For the twilio-cli option, run the following command and enter the resulting token into the placeholder:
- 
- `twilio token:chat --identity <The test chat username> --chat-service-sid <ISXXX...>`
+Update the following infomration in src/assets/ProjectData.js
 
-After generating a token manually, it will expire after a timeout period, so you will need to replace the token. To use this in production software, you would typically create a token endpoint in your back end application that uses your existing user authentication strategy.
+```
+  { id: 4084, name: "Scott", phoneNumber: "+14083142771", recruiter: "alice" },
+  { id: 4093, name: "Leslie", phoneNumber: "+16176052240", recruiter: "alice" },
+  { id: 4099, name: "Neha",  phoneNumber: "+19258886464", recruiter: "alice" },
+  { id: 5010, name: "Aimee", phoneNumber: "+16508629043", recruiter: "alice" }ts/ProjectData.js```
+
+
+Make sure the phone numbers for the above records are unique and accurate.
+
+In the following, make sure the projectedAddresses are valid Twilio phone numbers in your account
+```
+const recruiters = [
+  {name: "alice", vcf: "https://scotts-lab-1976.twil.io/alice.vcf", projectedAddress: "+14085836571" },
+  {name: "bob",   vcf: "https://scotts-lab-1976.twil.io/bob.vcf",   projectedAddress: "+14087223527" }
+]
+```
+
+
+

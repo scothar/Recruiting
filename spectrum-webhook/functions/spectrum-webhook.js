@@ -9,6 +9,11 @@ exports.handler = async function(context, event, callback) {
   let timezone = event.timezone || 'America/Chicago';
   const messageTime = moment().tz(timezone).format();
   
+    //If the body is null, then we don't need to send to Spectrum
+    if (!event.Body){
+      callback(null, twiml);
+    }
+    
   // Initialize the Spectrum Labs API request message body for inspection
   let spectrumReq = { 
           "timestamp": messageTime,

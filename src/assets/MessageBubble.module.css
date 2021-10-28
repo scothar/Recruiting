@@ -9,13 +9,16 @@
     width: 92%;
 }
 .received_withd_msg > div {
-    background: #ebebeb none repeat scroll 0 0;
-    border-radius: 3px;
+    background: #C2CBFF none repeat scroll 0 0;
+    border-radius: 6.5em;
     color: #646464;
     font-size: 14px;
     margin: 0;
     padding: 5px 10px 5px 12px;
     width: 100%;
+    font-weight: bold;
+    padding: 1em 2em;
+
 }
 .time_date {
     color: #747474;

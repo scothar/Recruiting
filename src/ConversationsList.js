@@ -33,7 +33,7 @@ export class ConversationsList extends React.Component {
                             className={conversationItemClassName}
                         >
                             <Text
-                                strong
+                               
                                 className={conversationsItemStyles['conversation-item-text']}
                             >
                                 {item.friendlyName || item.sid}

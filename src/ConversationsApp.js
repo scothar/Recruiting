@@ -177,15 +177,16 @@ class ConversationsApp extends React.Component {
                   maxWidth: "250px",
                   width: "100%",
                   display: "flex",
-                  alignItems: "center"
+                  alignItems: "center",
+                  padding: "5px 0 0"
                 }}
               >
-                <HeaderItem style={{ paddingRight: "0", display: "flex" }}>
-                  <Logo />
+                <HeaderItem style={{ paddingLeft: "19px", display: "flex", width:"55px" }}>
+                <div id="ore-logo"><img alt="Owl Real Estate" src="https://chatty-3917.twil.io/org-sm.png"/></div>
                 </HeaderItem>
-                <HeaderItem>
+                <HeaderItem style={{ padding: "21px 0 0",  margin:"-15px" }}>
                   <Text strong style={{ color: "white" }}>
-                    Facebook Recruiting
+                    OWL REAL ESTATE
                   </Text>
                 </HeaderItem>
               </div>
